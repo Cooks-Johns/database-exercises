@@ -4,9 +4,8 @@ USE employees;
 --2
 SELECT *
 FROM employees
-WHERE first_name In ('Irena', 'Vidya', 'Maya');
--- --
-
+-- ORDER BY first_name,
+ORDER BY first_name In ('Irena', 'Vidya', 'Maya');
 --3
 
 SELECT *
@@ -82,7 +81,7 @@ last_name NOT LIKE '%qu%';
 
 SELECT *
 FROM employees
-ORDER BY first_name, last_name, birth_date;
+ORDER BY first_name, last_name;
 
 
 
