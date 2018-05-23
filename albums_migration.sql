@@ -12,4 +12,3 @@ CREATE TABLE IF NOT EXISTS albums (
   genre VARCHAR (50),
   PRIMARY KEY (id)
 )
-
