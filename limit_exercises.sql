@@ -8,14 +8,29 @@ WHERE birth_date LIKE '%-05-23'
 LIMIT 20;
 
 
-SELECT DISTINCT last_name FROM employees
+SELECT DISTINCT titles
+FROM titles;
+
+
+SELECT DISTINCT last_name
+FROM employees
 ORDER BY last_name DESC
 LIMIT 10;
 
 
 SELECT *
 FROM employees
-WHERE birth_date LIKE '%-12-25'
-LIMIT 5 OFFSET 10;
+WHERE hire_date BETWEEEN '1990-01-01' AND '1999-12-31';
+AND birth_date LIKE '%-12-25'
+LIMIT 5;
+
+lIMIT 5 OFFSET 0
+lIMIT 5 OFFSET 5
+lIMIT 5 OFFSET 10
+
+
+lIMIT 5 OFFSET 0 ((pageN umb -1)) *
+
+
 
 
