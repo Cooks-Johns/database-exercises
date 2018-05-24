@@ -11,4 +11,5 @@ CREATE TABLE IF NOT EXISTS albums (
   sales INT(8),
   genre VARCHAR (50),
   PRIMARY KEY (id)
+  UNIQUE KEY (artist, name)
 )
