@@ -35,19 +35,19 @@ INSERT INTO roles (name) VALUES ('reviewer');
 INSERT INTO roles (name) VALUES ('commenter');
 
 INSERT INTO users (name, email, role_id) VALUES
-  (''bob'', ''bob@example.com'', 1),
-  (''joe'', ''joe@example.com'', 2),
-  (''sally'', ''sally@example.com'', 3),
-  (''adam'', ''adam@example.com'', NULL),
-  (''jane'', ''jane@example.com'', 2),
-  (''mike'', ''mike@example.com'', 1);
+  ('bob', 'bob@example.com', 1),
+  ('joe', 'joe@example.com', 2),
+  ('sally', 'sally@example.com', 3),
+  ('adam', 'adam@example.com', NULL),
+  ('jane', 'jane@example.com', 2),
+  ('mike', 'mike@example.com', 1);
 
 INSERT INTO posts (title, user_id) VALUES
-  (''Hello World'', 3),
-  (''Goodbye World'', NULL),
-  (''JS Rocks ZOMG JS'', 2),
-  (''Jquery is pretty ok...'', 2),
-  (''npm is trickier...'', 6),
-  (''Java is my favorite!!!'', 3),
-  (''IntelliJ is A-OK'', 5);
+  ('Hello World', 3),
+  ('Goodbye World', NULL),
+  ('JS Rocks ZOMG JS', 2),
+  ('Jquery is pretty ok...', 2),
+  ('npm is trickier...', 6),
+  ('Java is my favorite!!!', 3),
+  ('IntelliJ is A-OK', 5);
 
