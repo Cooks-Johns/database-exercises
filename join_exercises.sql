@@ -26,7 +26,7 @@ JOIN departments as d
 
 -- 5
 
-
+5
 -- BONUS
 
 
