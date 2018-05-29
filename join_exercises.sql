@@ -1,18 +1,61 @@
 USE employees;
 
-SELECT CONCAT(e.first_name, ' ', e.last_name) AS full_name, d.dept_name
-FROM employees as e
-JOIN dept_emp as de
-  ON de.emp_no = e.emp_no
-JOIN departments as d
-  ON d.dept_no = de.dept_no
-LIMIT 10;
 
-
-
--- returns the names of
 -- 2
 
+SELECT d.dept_name AS 'Departent Name',
+  concat(e.first_name, ' ', e.last_name) AS 'Department Manager'
+FROM employees as e
+JOIN dept_manager de
+  ON de.emp_no = e.emp_no
+JOIN departments d
+  ON d.dept_no = de.dept_no
+  WHERE de.to_date >= curdate()
+  ORDER BY d.dept_name;
+
+
+
+            -->>------------>---+--+->
+
+
+SELECT d.dept_name AS 'Department',
+  CONCAT(e.first_name, ' ', e.last_name) AS 'Manager'
+FROM employees e
+JOIN dept_manager dm
+  ON dm.emp_no = e.emp_no
+JOIN departments d
+  ON d.dept_no = dm.dept_no
+  WHERE e.gender = 'F' AND dm.to_date >= now()
+  ORDER BY d.dept_name;
+
+
+
+
+-- 3
+SELECT CONCAT(em.first_name, ' ', em.last_name) AS full_name, d.dept_name
+FROM dept_manager as dmm
+JOIN employees as em
+  ON em.emp_no = dmm.emp_no
+JOIN departments as d
+  ON em.emp_no = dmm.emp_no
+  WHERE to_date > now();
+
+
+
+-- 4
+SELECT d.dept_name AS 'Departent Name',
+  concat(e.first_name, ' ', e.last_name) AS 'Department Manager'
+FROM employees as e
+JOIN dept_manager de
+  ON de.emp_no = e.emp_no
+JOIN departments d
+  ON d.dept_no = de.dept_no
+  WHERE de.to_date >= curdate()
+  ORDER BY d.dept_name;
+
+
+
+-- 5
 SELECT CONCAT(em.first_name, ' ', em.last_name) AS full_name, d.dept_name
 FROM dept_manager as dmm
 JOIN employees as em
@@ -20,17 +63,12 @@ JOIN employees as em
 JOIN departments as d
  On d.dept_no = em.emp_no;
 
--- 3
 
--- 4
-
--- 5
-
-5
 -- BONUS
 
 
-SELECT CONCAT(e.first_name, ' ', e.last_name) AS full_name, d.dept_name
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS 'Employee',
+  d.dept_name
 
 
 FROM employees as e
@@ -42,5 +80,52 @@ JOIN departments as d
 UNION SELECT CONCAT(e.first_name, ' ', e.last_name) AS full_name
 FROM dept_manager as dm
 RIGHT JOIN employees as e
-  ON e.emp_no = dm.emp_no
-;
+  ON e.emp_no = dm.emp_no;
+
+
+
+
+
+
+
+  ---- notes
+
+SELECT CONCAT(em.first_name, ' ', em.last_name) AS full_name
+FROM dept_manager as dmm
+left JOIN employees as em
+  ON em.emp_no = dmm.emp_no;
+
+  SELECT CONCAT(e.first_name, ' ', e.last_name) AS full_name, d.dept_name
+FROM employees as e
+JOIN dept_emp as de
+  ON de.emp_no = e.emp_no
+JOIN departments as d
+  ON d.dept_no = de.dept_no
+LIMIT 10;
+
+
+
+-- returns the names of
+
+SELECT d.dept_name, e.first_name, e.last_name
+FROM departments d
+JOIN dept_manager dm
+  ON dm.dept_no = d.dept_no
+JOIN employees e
+  ON dm.emp_no = e.emp_no
+
+WHERE dm.to_date > now();
+
+--BREAKING DOWN NUM 5
+  -- find the current salary of all current managers
+  -- salaries - employees (emp_no)
+  -- employees -> departments (dept_no)
+  -- dept_manager -> departs (dept_no)
+
+
+-- this will do a complete log of the the history
+
+SELECT *
+FROM salaries
+JOIN employees ON salaries.emp_no = employees.emp_no
+WHERE salaries.to_date > now();
